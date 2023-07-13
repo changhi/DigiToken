@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		640103382A5EF8B500B32F98 /* DigiTokenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103372A5EF8B500B32F98 /* DigiTokenApp.swift */; };
+		6401033A2A5EF8B500B32F98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103392A5EF8B500B32F98 /* ContentView.swift */; };
+		6401033C2A5EF8B600B32F98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6401033B2A5EF8B600B32F98 /* Assets.xcassets */; };
+		6401033F2A5EF8B600B32F98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6401033E2A5EF8B600B32F98 /* Preview Assets.xcassets */; };
+		640103412A5EF8B600B32F98 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103402A5EF8B600B32F98 /* Persistence.swift */; };
+		640103442A5EF8B600B32F98 /* DigiToken.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 640103422A5EF8B600B32F98 /* DigiToken.xcdatamodeld */; };
+		6401034E2A5EF8B600B32F98 /* DigiTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401034D2A5EF8B600B32F98 /* DigiTokenTests.swift */; };
+		640103582A5EF8B600B32F98 /* DigiTokenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103572A5EF8B600B32F98 /* DigiTokenUITests.swift */; };
+		6401035A2A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103592A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift */; };
+		640103672A5EF9EB00B32F98 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103662A5EF9EB00B32F98 /* TokenView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6401034A2A5EF8B600B32F98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6401032C2A5EF8B500B32F98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 640103332A5EF8B500B32F98;
+			remoteInfo = DigiToken;
+		};
+		640103542A5EF8B600B32F98 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6401032C2A5EF8B500B32F98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 640103332A5EF8B500B32F98;
+			remoteInfo = DigiToken;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		640103342A5EF8B500B32F98 /* DigiToken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigiToken.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		640103372A5EF8B500B32F98 /* DigiTokenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigiTokenApp.swift; sourceTree = "<group>"; };
+		640103392A5EF8B500B32F98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6401033B2A5EF8B600B32F98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6401033E2A5EF8B600B32F98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		640103402A5EF8B600B32F98 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		640103432A5EF8B600B32F98 /* DigiToken.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DigiToken.xcdatamodel; sourceTree = "<group>"; };
+		640103492A5EF8B600B32F98 /* DigiTokenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigiTokenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6401034D2A5EF8B600B32F98 /* DigiTokenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigiTokenTests.swift; sourceTree = "<group>"; };
+		640103532A5EF8B600B32F98 /* DigiTokenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigiTokenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		640103572A5EF8B600B32F98 /* DigiTokenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigiTokenUITests.swift; sourceTree = "<group>"; };
+		640103592A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigiTokenUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		640103662A5EF9EB00B32F98 /* TokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		640103312A5EF8B500B32F98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		640103462A5EF8B600B32F98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		640103502A5EF8B600B32F98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6401032B2A5EF8B500B32F98 = {
+			isa = PBXGroup;
+			children = (
+				640103362A5EF8B500B32F98 /* DigiToken */,
+				6401034C2A5EF8B600B32F98 /* DigiTokenTests */,
+				640103562A5EF8B600B32F98 /* DigiTokenUITests */,
+				640103352A5EF8B500B32F98 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		640103352A5EF8B500B32F98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				640103342A5EF8B500B32F98 /* DigiToken.app */,
+				640103492A5EF8B600B32F98 /* DigiTokenTests.xctest */,
+				640103532A5EF8B600B32F98 /* DigiTokenUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		640103362A5EF8B500B32F98 /* DigiToken */ = {
+			isa = PBXGroup;
+			children = (
+				640103372A5EF8B500B32F98 /* DigiTokenApp.swift */,
+				640103392A5EF8B500B32F98 /* ContentView.swift */,
+				640103662A5EF9EB00B32F98 /* TokenView.swift */,
+				6401033B2A5EF8B600B32F98 /* Assets.xcassets */,
+				640103402A5EF8B600B32F98 /* Persistence.swift */,
+				640103422A5EF8B600B32F98 /* DigiToken.xcdatamodeld */,
+				6401033D2A5EF8B600B32F98 /* Preview Content */,
+			);
+			path = DigiToken;
+			sourceTree = "<group>";
+		};
+		6401033D2A5EF8B600B32F98 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6401033E2A5EF8B600B32F98 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6401034C2A5EF8B600B32F98 /* DigiTokenTests */ = {
+			isa = PBXGroup;
+			children = (
+				6401034D2A5EF8B600B32F98 /* DigiTokenTests.swift */,
+			);
+			path = DigiTokenTests;
+			sourceTree = "<group>";
+		};
+		640103562A5EF8B600B32F98 /* DigiTokenUITests */ = {
+			isa = PBXGroup;
+			children = (
+				640103572A5EF8B600B32F98 /* DigiTokenUITests.swift */,
+				640103592A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift */,
+			);
+			path = DigiTokenUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		640103332A5EF8B500B32F98 /* DigiToken */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6401035D2A5EF8B600B32F98 /* Build configuration list for PBXNativeTarget "DigiToken" */;
+			buildPhases = (
+				640103302A5EF8B500B32F98 /* Sources */,
+				640103312A5EF8B500B32F98 /* Frameworks */,
+				640103322A5EF8B500B32F98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DigiToken;
+			productName = DigiToken;
+			productReference = 640103342A5EF8B500B32F98 /* DigiToken.app */;
+			productType = "com.apple.product-type.application";
+		};
+		640103482A5EF8B600B32F98 /* DigiTokenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 640103602A5EF8B600B32F98 /* Build configuration list for PBXNativeTarget "DigiTokenTests" */;
+			buildPhases = (
+				640103452A5EF8B600B32F98 /* Sources */,
+				640103462A5EF8B600B32F98 /* Frameworks */,
+				640103472A5EF8B600B32F98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6401034B2A5EF8B600B32F98 /* PBXTargetDependency */,
+			);
+			name = DigiTokenTests;
+			productName = DigiTokenTests;
+			productReference = 640103492A5EF8B600B32F98 /* DigiTokenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		640103522A5EF8B600B32F98 /* DigiTokenUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 640103632A5EF8B600B32F98 /* Build configuration list for PBXNativeTarget "DigiTokenUITests" */;
+			buildPhases = (
+				6401034F2A5EF8B600B32F98 /* Sources */,
+				640103502A5EF8B600B32F98 /* Frameworks */,
+				640103512A5EF8B600B32F98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				640103552A5EF8B600B32F98 /* PBXTargetDependency */,
+			);
+			name = DigiTokenUITests;
+			productName = DigiTokenUITests;
+			productReference = 640103532A5EF8B600B32F98 /* DigiTokenUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6401032C2A5EF8B500B32F98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					640103332A5EF8B500B32F98 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					640103482A5EF8B600B32F98 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 640103332A5EF8B500B32F98;
+					};
+					640103522A5EF8B600B32F98 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 640103332A5EF8B500B32F98;
+					};
+				};
+			};
+			buildConfigurationList = 6401032F2A5EF8B500B32F98 /* Build configuration list for PBXProject "DigiToken" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6401032B2A5EF8B500B32F98;
+			productRefGroup = 640103352A5EF8B500B32F98 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				640103332A5EF8B500B32F98 /* DigiToken */,
+				640103482A5EF8B600B32F98 /* DigiTokenTests */,
+				640103522A5EF8B600B32F98 /* DigiTokenUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		640103322A5EF8B500B32F98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6401033F2A5EF8B600B32F98 /* Preview Assets.xcassets in Resources */,
+				6401033C2A5EF8B600B32F98 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		640103472A5EF8B600B32F98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		640103512A5EF8B600B32F98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		640103302A5EF8B500B32F98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				640103442A5EF8B600B32F98 /* DigiToken.xcdatamodeld in Sources */,
+				640103412A5EF8B600B32F98 /* Persistence.swift in Sources */,
+				640103672A5EF9EB00B32F98 /* TokenView.swift in Sources */,
+				6401033A2A5EF8B500B32F98 /* ContentView.swift in Sources */,
+				640103382A5EF8B500B32F98 /* DigiTokenApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		640103452A5EF8B600B32F98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6401034E2A5EF8B600B32F98 /* DigiTokenTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6401034F2A5EF8B600B32F98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				640103582A5EF8B600B32F98 /* DigiTokenUITests.swift in Sources */,
+				6401035A2A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6401034B2A5EF8B600B32F98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 640103332A5EF8B500B32F98 /* DigiToken */;
+			targetProxy = 6401034A2A5EF8B600B32F98 /* PBXContainerItemProxy */;
+		};
+		640103552A5EF8B600B32F98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 640103332A5EF8B500B32F98 /* DigiToken */;
+			targetProxy = 640103542A5EF8B600B32F98 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6401035B2A5EF8B600B32F98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6401035C2A5EF8B600B32F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6401035E2A5EF8B600B32F98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DigiToken/Preview Content\"";
+				DEVELOPMENT_TEAM = AVT2L8F4N2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniel.chang.DigiToken;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6401035F2A5EF8B600B32F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DigiToken/Preview Content\"";
+				DEVELOPMENT_TEAM = AVT2L8F4N2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniel.chang.DigiToken;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		640103612A5EF8B600B32F98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVT2L8F4N2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniel.chang.DigiTokenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DigiToken.app/DigiToken";
+			};
+			name = Debug;
+		};
+		640103622A5EF8B600B32F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVT2L8F4N2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniel.chang.DigiTokenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DigiToken.app/DigiToken";
+			};
+			name = Release;
+		};
+		640103642A5EF8B600B32F98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVT2L8F4N2;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniel.chang.DigiTokenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DigiToken;
+			};
+			name = Debug;
+		};
+		640103652A5EF8B600B32F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVT2L8F4N2;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniel.chang.DigiTokenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DigiToken;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6401032F2A5EF8B500B32F98 /* Build configuration list for PBXProject "DigiToken" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6401035B2A5EF8B600B32F98 /* Debug */,
+				6401035C2A5EF8B600B32F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6401035D2A5EF8B600B32F98 /* Build configuration list for PBXNativeTarget "DigiToken" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6401035E2A5EF8B600B32F98 /* Debug */,
+				6401035F2A5EF8B600B32F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		640103602A5EF8B600B32F98 /* Build configuration list for PBXNativeTarget "DigiTokenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				640103612A5EF8B600B32F98 /* Debug */,
+				640103622A5EF8B600B32F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		640103632A5EF8B600B32F98 /* Build configuration list for PBXNativeTarget "DigiTokenUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				640103642A5EF8B600B32F98 /* Debug */,
+				640103652A5EF8B600B32F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		640103422A5EF8B600B32F98 /* DigiToken.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				640103432A5EF8B600B32F98 /* DigiToken.xcdatamodel */,
+			);
+			currentVersion = 640103432A5EF8B600B32F98 /* DigiToken.xcdatamodel */;
+			path = DigiToken.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6401032C2A5EF8B500B32F98 /* Project object */;
+}
