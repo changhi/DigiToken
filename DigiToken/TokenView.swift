@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct tokenCardView: View {
+struct TokenCardView: View {
     @State var tapped = false
     @State var rotation = 0.0
     
@@ -20,7 +20,7 @@ struct tokenCardView: View {
                 .background(Color.blue)
                 .cornerRadius(15)
                 .rotationEffect(.degrees(rotation))
-                .onTapGesture() {
+                .onTapGesture(count: 2) {
                     tapped = !tapped
                     if tapped {
                         rotation = 90

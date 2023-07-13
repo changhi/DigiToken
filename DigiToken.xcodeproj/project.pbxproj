@@ -17,6 +17,7 @@
 		640103582A5EF8B600B32F98 /* DigiTokenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103572A5EF8B600B32F98 /* DigiTokenUITests.swift */; };
 		6401035A2A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103592A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift */; };
 		640103672A5EF9EB00B32F98 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103662A5EF9EB00B32F98 /* TokenView.swift */; };
+		6492BAFE2A60903000B5AAD7 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492BAFD2A60903000B5AAD7 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		640103572A5EF8B600B32F98 /* DigiTokenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigiTokenUITests.swift; sourceTree = "<group>"; };
 		640103592A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigiTokenUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		640103662A5EF9EB00B32F98 /* TokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
+		6492BAFD2A60903000B5AAD7 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				640103372A5EF8B500B32F98 /* DigiTokenApp.swift */,
 				640103392A5EF8B500B32F98 /* ContentView.swift */,
+				6492BAFD2A60903000B5AAD7 /* ContentViewModel.swift */,
 				640103662A5EF9EB00B32F98 /* TokenView.swift */,
 				6401033B2A5EF8B600B32F98 /* Assets.xcassets */,
 				640103402A5EF8B600B32F98 /* Persistence.swift */,
@@ -268,6 +271,7 @@
 			files = (
 				640103442A5EF8B600B32F98 /* DigiToken.xcdatamodeld in Sources */,
 				640103412A5EF8B600B32F98 /* Persistence.swift in Sources */,
+				6492BAFE2A60903000B5AAD7 /* ContentViewModel.swift in Sources */,
 				640103672A5EF9EB00B32F98 /* TokenView.swift in Sources */,
 				6401033A2A5EF8B500B32F98 /* ContentView.swift in Sources */,
 				640103382A5EF8B500B32F98 /* DigiTokenApp.swift in Sources */,

@@ -15,11 +15,15 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    @StateObject private var vm = ViewModel()
 
     var body: some View {
         ZStack {
             HStack {
-                tokenCardView()
+                ForEach(0..<vm.tokens.count) { i in
+                    vm.tokens[i]
+                }
             }
         }
     }
