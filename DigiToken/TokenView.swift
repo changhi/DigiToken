@@ -11,12 +11,24 @@ import SwiftUI
 struct TokenCardView: View {
     @State var tapped = false
     @State var rotation = 0.0
+    @State var numTokens = 1
+    @State var power = 0
+    @State var toughness = 0
+    @State var tokenName = "Goblin"
     
     var body: some View {
         ZStack {
-            Text("solider token")
-                .frame(width: 100, height: 140, alignment: .center)
-                .font(.system(size: 10))
+            VStack {
+                HStack {
+                    Text("\(numTokens)")
+                    Spacer()
+                }.padding([.leading, .top], 10)
+                Spacer()
+                HStack {
+                    Text(tokenName)
+                    Text("\(power)/\(toughness)")
+                }.padding([.bottom], 10)
+            }.frame(width: 100, height: 140, alignment: .center)
                 .background(Color.blue)
                 .cornerRadius(15)
                 .rotationEffect(.degrees(rotation))
