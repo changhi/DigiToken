@@ -15,7 +15,6 @@ extension ContentView {
         
         func addToken() {
             tokenCount += 1
-            print(tokens)
         }
     }
 }
