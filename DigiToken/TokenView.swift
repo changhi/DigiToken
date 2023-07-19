@@ -68,15 +68,26 @@ struct TokenCardView: View {
 }
 
 struct TokenModel: Hashable {
+    static var uid = 0
     var power: Int
     var toughness: Int
     var tokenName: String
     var numTokens: Int
+    var id: Int
     
     init(power: Int = 1, toughness: Int = 1, tokenName: String = "") {
         self.power = power
         self.toughness = toughness
         self.tokenName = tokenName
         self.numTokens = 1
+        self.id = TokenModel.generateId()
+    }
+    
+    static func generateId() -> Int {
+      uid += 1
+      return uid
+    }
+    static func == (lhs: TokenModel, rhs: TokenModel) -> Bool {
+        return lhs.id == rhs.id
     }
 }

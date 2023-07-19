@@ -10,8 +10,8 @@ import SwiftUI
 
 struct AddTokenMenuView: View {
     @State var tokenName = ""
-    @State var power = 0
-    @State var toughness = 0
+    @State var power = 1
+    @State var toughness = 1
     @Binding var tokens: Array<TokenModel>
     @Binding var showAddTokenMenu: Bool
 
