@@ -26,6 +26,9 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 HStack() {
+                    Button("Reset") {
+                        vm.resetBoard()
+                    }
                     Spacer()
                     Button("+") {
                         vm.toggleAddTokenMenu()
