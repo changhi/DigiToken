@@ -20,17 +20,24 @@ struct ContentView: View {
 
     var body: some View {
         ZStack() {
-            HStack(spacing: 30) {
-                ForEach(0..<vm.tokenCount, id:\.self) { _ in
-                    TokenCardView()
-                }
+            if vm.showAddTokenMenu {
+                AddTokenMenuView(tokens: $vm.tokens, showAddTokenMenu: $vm.showAddTokenMenu)
             }
-            VStack() {
+            VStack {
                 Spacer()
-                Button("add token") {
-                    vm.addToken()
+                HStack() {
+                    Spacer()
+                    Button("+") {
+                        vm.toggleAddTokenMenu()
+                    }
                 }
             }
+            HStack(spacing: 30) {
+                ForEach(vm.tokens, id:\.self) { model in
+                    TokenCardView(model: model)
+                        .zIndex(-1)
+                }
+            }.zIndex(-1)
         }
     }
 
