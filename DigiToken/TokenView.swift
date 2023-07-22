@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct TokenCardView: View {
-    @State var tapped = false
     @State var rotation = 0.0
     @State var numTokens = 1
     @State var power: Int
@@ -30,8 +29,12 @@ struct TokenCardView: View {
     
     var body: some View {
         ZStack {
+            VStack(spacing: 0) {
+                tapOverlay(100, 140, true, numTokens: self.$numTokens, rotation: self.$rotation)
+                tapOverlay(100, 140, false, numTokens: self.$numTokens, rotation: self.$rotation)
+            }.zIndex(1)
             HStack(spacing: 5) {
-                if tapped {
+                if rotation == 90 {
                     Text("\(power * numTokens)/\(toughness * numTokens)")
                         .rotationEffect(.degrees(270))
                 }
@@ -48,22 +51,44 @@ struct TokenCardView: View {
                 }.frame(width: 100, height: 140, alignment: .center)
                     .background(Color.blue)
                     .cornerRadius(15)
-            }.rotationEffect(.degrees(rotation))
-            .onTapGesture(count: 2) {
-                tapped = !tapped
-                if tapped {
-                    rotation = 90
-                } else {
-                    rotation = 0
-                }
             }
-        }
+        }.rotationEffect(.degrees(rotation))
     }
     
-    func SetTokenStats(_ tokenName: String, _ power: Int, _ toughness: Int) {
-        self.tokenName = tokenName
-        self.power = power
-        self.toughness = toughness
+    struct tapOverlay: View {
+        var width: CGFloat
+        var height: CGFloat
+        var increase: Bool
+        @Binding var numTokens: Int
+        @Binding var rotation: Double
+        
+        init(_ width: CGFloat, _ height: CGFloat, _ increase: Bool, numTokens: Binding<Int>, rotation: Binding<Double>) {
+            self.width = width
+            self.height = height / 2
+            self._numTokens = numTokens
+            self._rotation = rotation
+            self.increase = increase
+        }
+        
+        var body: some View {
+            Color.clear
+                .contentShape(Rectangle())
+                .frame(width: width, height: height)
+                .onTapGesture(count: 2) {
+                    if rotation == 90 {
+                        rotation = 0
+                    } else {
+                        rotation = 90
+                    }
+                }.onTapGesture {
+                    if increase {
+                        numTokens += 1
+                    }
+                    else {
+                        numTokens -= 1
+                    }
+                }
+        }
     }
 }
 
