@@ -14,7 +14,6 @@ struct AddTokenMenuView: View {
     @State var toughness = 1
     @Binding var tokens: Array<TokenModel>
     @Binding var showAddTokenMenu: Bool
-
     
     var body: some View {
         HStack {

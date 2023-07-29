@@ -19,7 +19,7 @@ struct ContentView: View {
     @StateObject private var vm = ViewModel()
 
     var body: some View {
-        ZStack() {
+        ZStack {
             if vm.showAddTokenMenu {
                 AddTokenMenuView(tokens: $vm.tokens, showAddTokenMenu: $vm.showAddTokenMenu)
             }
@@ -36,7 +36,7 @@ struct ContentView: View {
                 }
             }
             HStack(spacing: 30) {
-                ForEach(vm.tokens, id:\.self) { model in
+                ForEach($vm.tokens, id:\.self) { model in
                     TokenCardView(model: model)
                         .zIndex(-1)
                 }

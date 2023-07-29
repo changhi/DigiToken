@@ -19,6 +19,7 @@
 		640103672A5EF9EB00B32F98 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103662A5EF9EB00B32F98 /* TokenView.swift */; };
 		6492BAFE2A60903000B5AAD7 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492BAFD2A60903000B5AAD7 /* ContentViewModel.swift */; };
 		64A5E7272A65F4DD00FCE953 /* AddTokenMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A5E7262A65F4DD00FCE953 /* AddTokenMenuView.swift */; };
+		64F497052A6F2ABA00C268FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F497042A6F2ABA00C268FC /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		640103662A5EF9EB00B32F98 /* TokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
 		6492BAFD2A60903000B5AAD7 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		64A5E7262A65F4DD00FCE953 /* AddTokenMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenMenuView.swift; sourceTree = "<group>"; };
+		64F497042A6F2ABA00C268FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +106,11 @@
 		640103362A5EF8B500B32F98 /* DigiToken */ = {
 			isa = PBXGroup;
 			children = (
+				64F497062A6F2AEC00C268FC /* Views */,
 				640103372A5EF8B500B32F98 /* DigiTokenApp.swift */,
 				640103392A5EF8B500B32F98 /* ContentView.swift */,
+				64F497042A6F2ABA00C268FC /* SceneDelegate.swift */,
 				6492BAFD2A60903000B5AAD7 /* ContentViewModel.swift */,
-				640103662A5EF9EB00B32F98 /* TokenView.swift */,
-				64A5E7262A65F4DD00FCE953 /* AddTokenMenuView.swift */,
 				6401033B2A5EF8B600B32F98 /* Assets.xcassets */,
 				640103402A5EF8B600B32F98 /* Persistence.swift */,
 				640103422A5EF8B600B32F98 /* DigiToken.xcdatamodeld */,
@@ -140,6 +142,15 @@
 				640103592A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift */,
 			);
 			path = DigiTokenUITests;
+			sourceTree = "<group>";
+		};
+		64F497062A6F2AEC00C268FC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				640103662A5EF9EB00B32F98 /* TokenView.swift */,
+				64A5E7262A65F4DD00FCE953 /* AddTokenMenuView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +290,7 @@
 				640103672A5EF9EB00B32F98 /* TokenView.swift in Sources */,
 				6401033A2A5EF8B500B32F98 /* ContentView.swift in Sources */,
 				640103382A5EF8B500B32F98 /* DigiTokenApp.swift in Sources */,
+				64F497052A6F2ABA00C268FC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
