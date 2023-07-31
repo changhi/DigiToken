@@ -16,12 +16,12 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
-    @StateObject private var vm = ViewModel()
+    @EnvironmentObject var vm: ContentViewModel
 
     var body: some View {
         ZStack {
             if vm.showAddTokenMenu {
-                AddTokenMenuView(tokens: $vm.tokens, showAddTokenMenu: $vm.showAddTokenMenu)
+                AddTokenMenuView()
             }
             VStack {
                 Spacer()
@@ -77,10 +77,12 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static var myEnv = ContentViewModel()
     static var previews: some View {
         if #available(iOS 15.0, *) {
             ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                 .previewInterfaceOrientation(.landscapeLeft)
+                .environmentObject(myEnv)
         } else {
             // Fallback on earlier versions
             ContentView()

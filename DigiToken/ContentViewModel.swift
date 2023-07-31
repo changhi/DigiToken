@@ -7,17 +7,24 @@
 
 import Foundation
 
-extension ContentView {
-    @MainActor class ViewModel: ObservableObject {
-        @Published var tokens: Array<TokenModel> = Array()
-        @Published var showAddTokenMenu: Bool = false
-        
-        func resetBoard() {
-            tokens = Array()
-        }
-        
-        func toggleAddTokenMenu() {
-            showAddTokenMenu = !showAddTokenMenu
+class ContentViewModel: ObservableObject {
+    @Published var tokens: Array<TokenViewModel> = Array()
+    @Published var showAddTokenMenu: Bool = false
+    
+    func resetBoard() {
+        tokens = Array<TokenViewModel>()
+        TokenViewModel.resetUID()
+    }
+    
+    func toggleAddTokenMenu() {
+        showAddTokenMenu = !showAddTokenMenu
+    }
+    
+    func removeToken(id: Int) {
+        for (i, token) in tokens.enumerated() {
+            if token.id == id {
+                tokens.remove(at: i)
+            }
         }
     }
 }

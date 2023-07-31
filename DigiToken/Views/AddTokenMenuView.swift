@@ -12,8 +12,7 @@ struct AddTokenMenuView: View {
     @State var tokenName = ""
     @State var power = 1
     @State var toughness = 1
-    @Binding var tokens: Array<TokenModel>
-    @Binding var showAddTokenMenu: Bool
+    @EnvironmentObject var vm: ContentViewModel
     
     var body: some View {
         HStack {
@@ -38,10 +37,10 @@ struct AddTokenMenuView: View {
     }
     
     func createTokenView() {
-        tokens.append(TokenModel(power: power, toughness: toughness, tokenName: tokenName))
+        vm.tokens.append(TokenViewModel(tokenName, power, toughness))
     }
     
     func hideMenu() {
-        showAddTokenMenu = false
+        vm.showAddTokenMenu = false
     }
 }

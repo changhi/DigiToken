@@ -7,16 +7,13 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct TokenCardView: View {
-    @Binding var model: TokenModel
+    @Binding var model: TokenViewModel
     
     var body: some View {
         ZStack {
-//            VStack(spacing: 0) {
-//                tapOverlay(100, 140, true, numTokens: self.$numTokens, rotation: self.$rotation)
-//                tapOverlay(100, 140, false, numTokens: self.$numTokens, rotation: self.$rotation)
-//            }.zIndex(1)
             HStack(spacing: 5) {
                 if model.rotation == 90 {
                     Text("\(model.power * model.numTokens)/\(model.toughness * model.numTokens)")
@@ -39,66 +36,41 @@ struct TokenCardView: View {
         }.rotationEffect(.degrees(model.rotation))
     }
     
-//    struct tapOverlay: View {
-//        var width: CGFloat
-//        var height: CGFloat
-//        var increase: Bool
-//        @Binding var numTokens: Int
-//        @Binding var rotation: Double
-//
-//        init(_ width: CGFloat, _ height: CGFloat, _ increase: Bool, numTokens: Binding<Int>, rotation: Binding<Double>) {
-//            self.width = width
-//            self.height = height / 2
-//            self._numTokens = numTokens
-//            self._rotation = rotation
-//            self.increase = increase
-//        }
-//
-//        var body: some View {
-//            Color.clear
-//                .contentShape(Rectangle())
-//                .frame(width: width, height: height)
-//                .onTapGesture(count: 2) {
-//                    if rotation == 90 {
-//                        rotation = 0
-//                    } else {
-//                        rotation = 90
-//                    }
-//                }.onTapGesture {
-//                    if increase {
-//                        numTokens += 1
-//                    }
-//                    else {
-//                        numTokens -= 1
-//                    }
-//                }
-//        }
-//    }
 }
 
-struct TokenModel: Hashable {
-    static var uid = 0
+class TokenViewModel: ObservableObject, Hashable {
+    static private var uid: Int = 0
+    var id: Int
+    var tokenName: String
+    var rotation: Double
     var power: Int
     var toughness: Int
-    var tokenName: String
     var numTokens: Int
-    var rotation: Double
-    var id: Int
     
-    init(power: Int = 1, toughness: Int = 1, tokenName: String = "") {
+    init(_ tokenName: String, _ power: Int, _ toughness: Int) {
+        self.id = TokenViewModel.generateId()
+        self.tokenName = tokenName
+        self.rotation = 0.0
         self.power = power
         self.toughness = toughness
-        self.tokenName = tokenName
         self.numTokens = 1
-        self.id = TokenModel.generateId()
-        self.rotation = 0
     }
     
     static func generateId() -> Int {
-      uid += 1
-      return uid
+          uid += 1
+          return uid
     }
-    static func == (lhs: TokenModel, rhs: TokenModel) -> Bool {
-        return lhs.id == rhs.id
+    
+    static func == (lhs: TokenViewModel, rhs: TokenViewModel) -> Bool {
+        lhs.id == rhs.id
     }
+    
+    static func resetUID() {
+        uid = 0;
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
 }
