@@ -13,17 +13,18 @@ struct AddTokenMenuView: View {
     @State var power = 1
     @State var toughness = 1
     @EnvironmentObject var vm: ContentViewModel
+    private let range = 0...10000
     
     var body: some View {
         HStack {
             VStack(spacing: 20) {
                 TextField("Token Name", text: $tokenName)
                 HStack {
-                    Stepper(value: $power) {
+                    Stepper(value: $power, in: range) {
                         Text("power: \(power)")
                     }
                 }
-                Stepper(value: $toughness) {
+                Stepper(value: $toughness, in: range) {
                     Text("toughness: \(toughness)")
                 }
                 Button("Create Token") {
@@ -37,7 +38,8 @@ struct AddTokenMenuView: View {
     }
     
     func createTokenView() {
-        vm.tokens.append(TokenViewModel(tokenName, power, toughness))
+        vm.createToken(tokenName, power, toughness)
+        print("hulk")
     }
     
     func hideMenu() {

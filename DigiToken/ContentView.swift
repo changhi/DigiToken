@@ -16,7 +16,7 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
-    @EnvironmentObject var vm: ContentViewModel
+    @StateObject var vm: ContentViewModel = ContentViewModel()
 
     var body: some View {
         ZStack {
@@ -41,7 +41,7 @@ struct ContentView: View {
                         .zIndex(-1)
                 }
             }.zIndex(-1)
-        }
+        }.environmentObject(vm)
     }
 
     private func addItem() {
@@ -77,12 +77,10 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var myEnv = ContentViewModel()
     static var previews: some View {
         if #available(iOS 15.0, *) {
             ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                 .previewInterfaceOrientation(.landscapeLeft)
-                .environmentObject(myEnv)
         } else {
             // Fallback on earlier versions
             ContentView()

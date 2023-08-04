@@ -8,8 +8,16 @@
 import Foundation
 
 class ContentViewModel: ObservableObject {
-    @Published var tokens: Array<TokenViewModel> = Array()
+    @Published var tokens: Array<TokenViewModel>
     @Published var showAddTokenMenu: Bool = false
+    
+    init() {
+        self.tokens = Array()
+        self.showAddTokenMenu = false
+        for _ in 0..<4 {
+            tokens.append(TokenViewModel())
+        }
+    }
     
     func resetBoard() {
         tokens = Array<TokenViewModel>()
@@ -21,10 +29,23 @@ class ContentViewModel: ObservableObject {
     }
     
     func removeToken(id: Int) {
-        for (i, token) in tokens.enumerated() {
-            if token.id == id {
-                tokens.remove(at: i)
+        tokens[id] = TokenViewModel()
+    }
+    
+    func createToken(_ tokenName: String, _ power: Int, _ toughness: Int) {
+        for i in 0..<tokens.count {
+            if !tokens[i].show {
+                tokens[i].power = power
+                tokens[i].toughness = toughness
+                tokens[i].tokenName = tokenName
+                tokens[i].show = true
+                break
             }
         }
+        
+    }
+    
+    func change() {
+        self.objectWillChange.send()
     }
 }
