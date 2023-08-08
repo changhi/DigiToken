@@ -17,32 +17,47 @@ struct AddTokenMenuView: View {
     
     var body: some View {
         HStack {
-            VStack(spacing: 20) {
+            Spacer()
+            VStack(alignment: .center, spacing: 20) {
+                Spacer().frame(height: 2)
                 TextField("Token Name", text: $tokenName)
-                HStack {
-                    Stepper(value: $power, in: range) {
-                        Text("power: \(power)")
-                    }
+                    .multilineTextAlignment(.center)
+                    .frame(width: 200)
+                Stepper(value: $power, in: range) {
+                    Text("power: \(power)")
                 }
                 Stepper(value: $toughness, in: range) {
                     Text("toughness: \(toughness)")
                 }
                 Button("Create Token") {
-                    createTokenView()
+                    createToken()
                     hideMenu()
                 }
+                Spacer().frame(height: 2)
             }
-        }.frame(width: 250, alignment: .trailing)
+        }.frame(width: 350)
             .background(Color.gray)
+            .cornerRadius(25.0)
             .shadow(radius: 1)
     }
     
-    func createTokenView() {
+    func createToken() {
         vm.createToken(tokenName, power, toughness)
-        print("hulk")
     }
     
     func hideMenu() {
         vm.showAddTokenMenu = false
+    }
+}
+
+struct Add_tokenView_Previews: PreviewProvider {
+    static var previews: some View {
+        if #available(iOS 15.0, *) {
+            AddTokenMenuView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                .previewInterfaceOrientation(.landscapeLeft)
+        } else {
+            // Fallback on earlier versions
+            ContentView()
+        }
     }
 }

@@ -11,12 +11,15 @@ import Combine
 
 struct TokenCardView: View {
     @Binding var model: TokenViewModel
+    var height: CGFloat = 190
+    var width: CGFloat = 140
+    
     var body: some View {
         if model.show {
             ZStack {
                 VStack {
-                    tokenOverlay(120, 160, true, $model.rotation, $model.numTokens, $model.show)
-                    tokenOverlay(120, 160, false, $model.rotation, $model.numTokens, $model.show)
+                    tokenOverlay(width, height, true, $model.rotation, $model.numTokens, $model.show)
+                    tokenOverlay(width, height, false, $model.rotation, $model.numTokens, $model.show)
                 }.zIndex(1)
                 HStack(spacing: 5) {
                     if model.rotation == 90 {
@@ -33,7 +36,7 @@ struct TokenCardView: View {
                             Text(model.tokenName)
                             Text("\(model.power)/\(model.toughness)")
                         }.padding([.bottom], 10)
-                    }.frame(width: 120, height: 160, alignment: .center)
+                    }.frame(width: width, height: height, alignment: .center)
                         .background(Color.blue)
                         .cornerRadius(15)
                 }
