@@ -28,10 +28,6 @@ class ContentViewModel: ObservableObject {
         showAddTokenMenu = !showAddTokenMenu
     }
     
-    func removeToken(id: Int) {
-        tokens[id] = TokenViewModel()
-    }
-    
     func createToken(_ tokenName: String, _ power: Int, _ toughness: Int) {
         for i in 0..<tokens.count {
             if !tokens[i].show {

@@ -15,8 +15,8 @@ struct TokenCardView: View {
         if model.show {
             ZStack {
                 VStack {
-                    tokenOverlay(120, 160, true, $model.rotation, $model.numTokens)
-                    tokenOverlay(120, 160, false, $model.rotation, $model.numTokens)
+                    tokenOverlay(120, 160, true, $model.rotation, $model.numTokens, $model.show)
+                    tokenOverlay(120, 160, false, $model.rotation, $model.numTokens, $model.show)
                 }.zIndex(1)
                 HStack(spacing: 5) {
                     if model.rotation == 90 {
@@ -48,10 +48,13 @@ struct TokenCardView: View {
         var increase: Bool
         @Binding var rotation: Double
         @Binding var numTokens: Int
+        @Binding var show: Bool
         
-        init(_ width: CGFloat, _ height: CGFloat, _ increase: Bool, _ rotation: Binding<Double>, _ numTokens: Binding<Int>) {
+        init(_ width: CGFloat, _ height: CGFloat, _ increase: Bool, _ rotation: Binding<Double>,
+             _ numTokens: Binding<Int>, _ show: Binding<Bool>) {
             self._rotation = rotation
             self._numTokens = numTokens
+            self._show = show
             self.width = width
             self.height = height / 2
             self.increase = increase
@@ -73,6 +76,10 @@ struct TokenCardView: View {
                     }
                     else {
                         numTokens -= 1
+                        if numTokens < 0 {
+                            numTokens = 1
+                            show = false
+                        }
                     }
                 }
         }
