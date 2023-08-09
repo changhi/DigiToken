@@ -49,15 +49,3 @@ struct AddTokenMenuView: View {
         vm.showAddTokenMenu = false
     }
 }
-
-struct Add_tokenView_Previews: PreviewProvider {
-    static var previews: some View {
-        if #available(iOS 15.0, *) {
-            AddTokenMenuView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-                .previewInterfaceOrientation(.landscapeLeft)
-        } else {
-            // Fallback on earlier versions
-            ContentView()
-        }
-    }
-}

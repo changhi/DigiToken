@@ -11,9 +11,12 @@ class ContentViewModel: ObservableObject {
     @Published var tokens: Array<TokenViewModel>
     @Published var showAddTokenMenu: Bool = false
     
-    init() {
+    let service: ScryfallCardFetcherAPIServices
+    
+    init(service: ScryfallCardFetcherAPIServices = ScryfallTokenFetcherServices.shared) {
         self.tokens = Array()
         self.showAddTokenMenu = false
+        self.service = service
         for _ in 0..<4 {
             tokens.append(TokenViewModel())
         }
@@ -22,6 +25,9 @@ class ContentViewModel: ObservableObject {
     func resetBoard() {
         tokens = Array<TokenViewModel>()
         TokenViewModel.resetUID()
+        for _ in 0..<4 {
+            tokens.append(TokenViewModel())
+        }
     }
     
     func toggleAddTokenMenu() {
@@ -38,7 +44,20 @@ class ContentViewModel: ObservableObject {
                 break
             }
         }
-        
+        var confirmedResult: Result<testDecodable, ScryfallAPIError>?
+        service.getCardInfo(cardName: "human") { [weak self](result) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.showAddTokenMenu = true
+                    print(data)
+                case .failure(let error):
+                    self.showAddTokenMenu = true
+                    print(error)
+                }
+            }
+        }
     }
     
     func change() {
