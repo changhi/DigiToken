@@ -44,8 +44,8 @@ class ContentViewModel: ObservableObject {
                 break
             }
         }
-        var confirmedResult: Result<testDecodable, ScryfallAPIError>?
-        service.getCardInfo(cardName: "human") { [weak self](result) in
+        
+        service.getCardInfo(cardName: tokenName) { [weak self](result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {

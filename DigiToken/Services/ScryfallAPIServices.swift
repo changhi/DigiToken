@@ -32,11 +32,12 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
     
     private init() {}
     
-    private func generateURLQueryItems(cardName: String? = nil) -> [URLQueryItem] {
-        var items = [URLQueryItem]()
+    private func generateURLQueryItems(cardName: String? = nil, format: String = "json") -> [URLQueryItem] {
+        var items: [URLQueryItem] = []
         if let cardName = cardName {
             items.append(URLQueryItem(name: "exact", value: cardName))
         }
+        items.append(URLQueryItem(name: "format", value: format))
         return items
     }
     
@@ -69,7 +70,14 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
                 return
             }
             let json = try! JSONSerialization.jsonObject(with: data, options: [])
-            print(json)
+            
+            do {
+                let model = try self.jsonDecoder.decode(D.self, from: data)
+                print(json)
+                completion(.success(model))
+            } catch let error as NSError{
+                completion(.failure(.error(error)))
+            }
         }.resume()
     }
     
@@ -78,15 +86,13 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
             completion(.failure(.invalidURL))
             return
         }
-        print(url)
         excuteDataTask(with: url) { (result: Result<testDecodable, ScryfallAPIError>) in
             
         }
-        print("end")
     }
 }
 
-
+// fix this later
 struct testDecodable: Decodable {
     
 }
