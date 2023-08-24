@@ -20,22 +20,27 @@ struct TokenCardView: View {
                 VStack {
                     tokenOverlay(width, height, true, $model.rotation, $model.numTokens, $model.show)
                     tokenOverlay(width, height, false, $model.rotation, $model.numTokens, $model.show)
-                }.zIndex(1)
+                }.zIndex(2)
                 HStack(spacing: 5) {
                     if model.rotation == 90 {
                         Text("\(model.power * model.numTokens)/\(model.toughness * model.numTokens)")
                             .rotationEffect(.degrees(270))
                     }
-                    VStack {
-                        HStack {
-                            Text("\(model.numTokens)")
+                    ZStack {
+                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/original/pThyQovXQrw2m0s9x82twj48Jq4.jpg")!, placeholder: {Text("loading...")})
+                            .aspectRatio(contentMode: .fit)
+                            .zIndex(-1)
+                        VStack {
+                            HStack {
+                                Text("\(model.numTokens)")
+                                Spacer()
+                            }.padding([.leading, .top], 10)
                             Spacer()
-                        }.padding([.leading, .top], 10)
-                        Spacer()
-                        HStack {
-                            Text(model.tokenName)
-                            Text("\(model.power)/\(model.toughness)")
-                        }.padding([.bottom], 10)
+                            HStack {
+                                Text(model.tokenName)
+                                Text("\(model.power)/\(model.toughness)")
+                            }.padding([.bottom], 10)
+                        }
                     }.frame(width: width, height: height, alignment: .center)
                         .background(Color.blue)
                         .cornerRadius(15)

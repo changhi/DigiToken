@@ -45,19 +45,19 @@ class ContentViewModel: ObservableObject {
             }
         }
         
-        service.getCardInfo(cardName: tokenName) { [weak self](result) in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    self.showAddTokenMenu = true
-                    print(data)
-                case .failure(let error):
-                    self.showAddTokenMenu = true
-                    print(error)
-                }
-            }
-        }
+//        service.getCardInfo(cardName: tokenName) { [weak self](result) in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let data):
+//                    self.showAddTokenMenu = true
+//                    print(data)
+//                case .failure(let error):
+//                    self.showAddTokenMenu = true
+//                    print(error)
+//                }
+//            }
+//        }
     }
     
     func change() {
