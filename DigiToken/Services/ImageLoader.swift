@@ -25,13 +25,10 @@ class ImageLoader: ObservableObject {
     }
     
     func load() {
-        print(cache?[url])
         if let image = cache?[url] {
-            print("cache")
             self.image = image
             return
         }
-        print("url call")
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map {UIImage(data: $0.data)}
             .replaceError(with: nil)

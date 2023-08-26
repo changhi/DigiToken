@@ -16,7 +16,8 @@ enum ScryfallAPIError: Error {
 }
 
 protocol ScryfallCardFetcherAPIServices {
-    func getCardInfo(cardName: String, completion: @escaping (Result<testDecodable, ScryfallAPIError>) -> ())
+    func getCardInfo(cardName: String, completion: @escaping (Result<CardInfo, ScryfallAPIError>) -> ())
+    func getCardImageURL(cardName: String) -> URL? 
 }
 
 class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
@@ -50,7 +51,6 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
     }
     
     private func excuteDataTask<D: Decodable>(with url: URL, completion: @escaping (Result<D, ScryfallAPIError>) -> ()) {
-        print("exe")
         urlSession.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 completion(.failure(.error(error as NSError)))
@@ -73,7 +73,6 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
             
             do {
                 let model = try self.jsonDecoder.decode(D.self, from: data)
-                print(json)
                 completion(.success(model))
             } catch let error as NSError{
                 completion(.failure(.error(error)))
@@ -81,18 +80,37 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
         }.resume()
     }
     
-    func getCardInfo(cardName: String, completion: @escaping (Result<testDecodable, ScryfallAPIError>) -> ()) {
+    func getCardInfo(cardName: String, completion: @escaping (Result<CardInfo, ScryfallAPIError>) -> ()) {
         guard let url = generateURL(with: generateURLQueryItems(cardName: cardName))  else {
             completion(.failure(.invalidURL))
             return
         }
-        excuteDataTask(with: url) { (result: Result<testDecodable, ScryfallAPIError>) in
-            
+        excuteDataTask(with: url) { (result: Result<CardInfo, ScryfallAPIError>) in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case.failure(let error):
+                completion(.failure(error))
+            }
         }
+    }
+    
+    func getCardImageURL(cardName: String) -> URL? {
+        guard let url = generateURL(with: generateURLQueryItems(cardName: cardName, format: "image"))  else {
+            return nil
+        }
+        //get card info then get url
+        return url
     }
 }
 
-// fix this later
-struct testDecodable: Decodable {
-    
+struct CardInfo: Decodable {
+    let artist: String
+    let card_faces: [CardImageInfo]
 }
+// TODO: need a way to check if card is double faced or error will be thrown
+struct CardImageInfo: Decodable {
+    let name: String
+    let image_uris: [String:URL]
+}
+

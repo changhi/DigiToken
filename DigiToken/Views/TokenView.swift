@@ -12,7 +12,7 @@ import Combine
 struct TokenCardView: View {
     @Binding var model: TokenViewModel
     var height: CGFloat = 190
-    var width: CGFloat = 140
+    var width: CGFloat = 135
     
     var body: some View {
         if model.show {
@@ -27,18 +27,26 @@ struct TokenCardView: View {
                             .rotationEffect(.degrees(270))
                     }
                     ZStack {
-                        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/original/pThyQovXQrw2m0s9x82twj48Jq4.jpg")!, placeholder: {Text("loading...")})
-                            .aspectRatio(contentMode: .fit)
-                            .zIndex(-1)
+                        if let url = model.imageURL {
+                            AsyncImage(url: url, placeholder: {Text("loading...")})
+                                .aspectRatio(contentMode: .fit)
+                                .zIndex(-1)
+                        }
                         VStack {
                             HStack {
                                 Text("\(model.numTokens)")
+                                    .foregroundColor(.white)
                                 Spacer()
                             }.padding([.leading, .top], 10)
                             Spacer()
                             HStack {
+                                Spacer()
                                 Text(model.tokenName)
+                                    .foregroundColor(.white)
+                                Spacer()
                                 Text("\(model.power)/\(model.toughness)")
+                                    .foregroundColor(.white)
+                                Spacer()
                             }.padding([.bottom], 10)
                         }
                     }.frame(width: width, height: height, alignment: .center)
@@ -104,6 +112,7 @@ class TokenViewModel: ObservableObject, Hashable {
     @Published var toughness: Int
     @Published var numTokens: Int
     @Published var show: Bool
+    @Published var imageURL: URL?
     @EnvironmentObject var vm: ContentViewModel
     
     init() {
@@ -116,7 +125,7 @@ class TokenViewModel: ObservableObject, Hashable {
         self.show = false
     }
     
-    init(_ tokenName: String, _ power: Int, _ toughness: Int) {
+    init(_ tokenName: String, _ power: Int, _ toughness: Int, _ url: URL? = nil) {
         self.id = TokenViewModel.generateId()
         self.tokenName = tokenName
         self.rotation = 0.0
@@ -124,6 +133,7 @@ class TokenViewModel: ObservableObject, Hashable {
         self.toughness = toughness
         self.numTokens = 1
         self.show = false
+        self.imageURL = url
     }
     
     static func generateId() -> Int {
