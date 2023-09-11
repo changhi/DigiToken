@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+import SwiftUI
 
 enum ScryfallAPIError: Error {
     case genError
@@ -16,8 +18,7 @@ enum ScryfallAPIError: Error {
 }
 
 protocol ScryfallCardFetcherAPIServices {
-    func getCardInfo(cardName: String, completion: @escaping (Result<CardInfo, ScryfallAPIError>) -> ())
-    func getCardImageURL(cardName: String) -> URL? 
+    func getCardImageURL(cardName: String) -> AnyPublisher<URL?,Never>
 }
 
 class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
@@ -80,37 +81,69 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
         }.resume()
     }
     
-    func getCardInfo(cardName: String, completion: @escaping (Result<CardInfo, ScryfallAPIError>) -> ()) {
-        guard let url = generateURL(with: generateURLQueryItems(cardName: cardName))  else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        excuteDataTask(with: url) { (result: Result<CardInfo, ScryfallAPIError>) in
-            switch result {
-            case .success(let response):
-                completion(.success(response))
-            case.failure(let error):
-                completion(.failure(error))
+    func getCardImageURL(cardName: String) -> AnyPublisher<URL?, Never> {
+        guard let url = generateURL(with: generateURLQueryItems(cardName: cardName)) else { return Just<URL?>(nil)
+                .eraseToAnyPublisher()}
+        return urlSession.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: CardInfo.self, decoder: jsonDecoder)
+            .map { data in
+                if data.image_uris != nil {
+                    if let imageUrl = data.image_uris?["normal"] {
+                        return imageUrl
+                    }
+                }
+                return nil
             }
-        }
-    }
-    
-    func getCardImageURL(cardName: String) -> URL? {
-        guard let url = generateURL(with: generateURLQueryItems(cardName: cardName, format: "image"))  else {
-            return nil
-        }
-        //get card info then get url
-        return url
+            .replaceError(with: nil)
+            .eraseToAnyPublisher()
     }
 }
 
 struct CardInfo: Decodable {
     let artist: String
-    let card_faces: [CardImageInfo]
+    let card_faces: [CardImageInfo]?
+    let image_uris: [String:URL]?
+    
+    enum CodingKeys: CodingKey {
+        case artist
+        case card_faces
+        case image_uris
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.artist = try container.decode(String.self, forKey: .artist)
+        
+        if container.contains(.card_faces) {
+            card_faces = try container.decodeIfPresent([CardImageInfo].self, forKey: .card_faces)
+        } else {
+            card_faces = nil
+        }
+        
+        if container.contains(.image_uris) {
+            image_uris = try container.decode([String:URL].self, forKey: .image_uris)
+        } else {
+            image_uris = nil
+        }
+    }
 }
-// TODO: need a way to check if card is double faced or error will be thrown
+
 struct CardImageInfo: Decodable {
     let name: String
     let image_uris: [String:URL]
+}
+
+struct ScryFallService: EnvironmentKey {
+    static let defaultValue: ScryfallCardFetcherAPIServices = ScryfallTokenFetcherServices.shared
+}
+
+extension EnvironmentValues {
+    var scryFallService: ScryfallCardFetcherAPIServices {
+        get {
+            return self[ScryFallService.self]
+        }
+        set { self[ScryFallService.self] = newValue }
+    }
 }
 

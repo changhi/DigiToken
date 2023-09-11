@@ -16,6 +16,7 @@ struct TokenCardView: View {
     
     var body: some View {
         if model.show {
+            Text(model.imageURL != nil ? model.imageURL!.absoluteString : "nil")
             ZStack {
                 VStack {
                     tokenOverlay(width, height, true, $model.rotation, $model.numTokens, $model.show)
@@ -28,6 +29,7 @@ struct TokenCardView: View {
                     }
                     ZStack {
                         if let url = model.imageURL {
+                            // TODO: Find a way to reload the image when url changes
                             AsyncImage(url: url, placeholder: {Text("loading...")})
                                 .aspectRatio(contentMode: .fit)
                                 .zIndex(-1)
@@ -106,16 +108,15 @@ struct TokenCardView: View {
 class TokenViewModel: ObservableObject, Hashable {
     static private var uid: Int = 0
     var id: Int
-    var tokenName: String
+    @Published var tokenName: String
     @Published var rotation: Double
     @Published var power: Int
     @Published var toughness: Int
     @Published var numTokens: Int
     @Published var show: Bool
     @Published var imageURL: URL?
-    @EnvironmentObject var vm: ContentViewModel
     
-    init() {
+    init(_ service: ScryfallCardFetcherAPIServices) {
         self.id = TokenViewModel.generateId()
         self.tokenName = "token"
         self.rotation = 0.0
@@ -125,7 +126,7 @@ class TokenViewModel: ObservableObject, Hashable {
         self.show = false
     }
     
-    init(_ tokenName: String, _ power: Int, _ toughness: Int, _ url: URL? = nil) {
+    init(_ tokenName: String, _ power: Int, _ toughness: Int) {
         self.id = TokenViewModel.generateId()
         self.tokenName = tokenName
         self.rotation = 0.0
@@ -133,7 +134,6 @@ class TokenViewModel: ObservableObject, Hashable {
         self.toughness = toughness
         self.numTokens = 1
         self.show = false
-        self.imageURL = url
     }
     
     static func generateId() -> Int {
