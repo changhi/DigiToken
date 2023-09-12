@@ -31,8 +31,11 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
             decoder.dateDecodingStrategy = .millisecondsSince1970
             return decoder
         }()
+    private var urlCache: [String:URL?]
     
-    private init() {}
+    private init() {
+        urlCache = [:]
+    }
     
     private func generateURLQueryItems(cardName: String? = nil, format: String = "json") -> [URLQueryItem] {
         var items: [URLQueryItem] = []
@@ -82,6 +85,9 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
     }
     
     func getCardImageURL(cardName: String) -> AnyPublisher<URL?, Never> {
+        if urlCache[cardName] != nil {
+            return Just<URL?>(urlCache[cardName]!).eraseToAnyPublisher()
+        }
         guard let url = generateURL(with: generateURLQueryItems(cardName: cardName)) else { return Just<URL?>(nil)
                 .eraseToAnyPublisher()}
         return urlSession.dataTaskPublisher(for: url)
@@ -90,6 +96,7 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
             .map { data in
                 if data.image_uris != nil {
                     if let imageUrl = data.image_uris?["normal"] {
+                        self.urlCache[cardName] = imageUrl
                         return imageUrl
                     }
                 }
