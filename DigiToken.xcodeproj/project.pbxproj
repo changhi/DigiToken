@@ -17,6 +17,9 @@
 		640103582A5EF8B600B32F98 /* DigiTokenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103572A5EF8B600B32F98 /* DigiTokenUITests.swift */; };
 		6401035A2A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103592A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift */; };
 		640103672A5EF9EB00B32F98 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640103662A5EF9EB00B32F98 /* TokenView.swift */; };
+		640547D62AB0BFDD00730515 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640547D52AB0BFDD00730515 /* AsyncImage.swift */; };
+		640547D82AB0C01F00730515 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640547D72AB0C01F00730515 /* ImageLoader.swift */; };
+		640547DA2AB0C03900730515 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640547D92AB0C03900730515 /* ImageCache.swift */; };
 		6492BAFE2A60903000B5AAD7 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6492BAFD2A60903000B5AAD7 /* ContentViewModel.swift */; };
 		64A5E7272A65F4DD00FCE953 /* AddTokenMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A5E7262A65F4DD00FCE953 /* AddTokenMenuView.swift */; };
 		64CD4FD22A82FCD4007EF594 /* ScryfallAPIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CD4FD12A82FCD4007EF594 /* ScryfallAPIServices.swift */; };
@@ -53,6 +56,9 @@
 		640103572A5EF8B600B32F98 /* DigiTokenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigiTokenUITests.swift; sourceTree = "<group>"; };
 		640103592A5EF8B600B32F98 /* DigiTokenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigiTokenUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		640103662A5EF9EB00B32F98 /* TokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
+		640547D52AB0BFDD00730515 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		640547D72AB0C01F00730515 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		640547D92AB0C03900730515 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		6492BAFD2A60903000B5AAD7 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		64A5E7262A65F4DD00FCE953 /* AddTokenMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTokenMenuView.swift; sourceTree = "<group>"; };
 		64CD4FD12A82FCD4007EF594 /* ScryfallAPIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScryfallAPIServices.swift; sourceTree = "<group>"; };
@@ -155,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				64CD4FD12A82FCD4007EF594 /* ScryfallAPIServices.swift */,
+				640547D72AB0C01F00730515 /* ImageLoader.swift */,
+				640547D92AB0C03900730515 /* ImageCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -165,6 +173,7 @@
 				640103662A5EF9EB00B32F98 /* TokenView.swift */,
 				640103392A5EF8B500B32F98 /* ContentView.swift */,
 				64A5E7262A65F4DD00FCE953 /* AddTokenMenuView.swift */,
+				640547D52AB0BFDD00730515 /* AsyncImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,7 +308,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				640547DA2AB0C03900730515 /* ImageCache.swift in Sources */,
 				640103442A5EF8B600B32F98 /* DigiToken.xcdatamodeld in Sources */,
+				640547D62AB0BFDD00730515 /* AsyncImage.swift in Sources */,
+				640547D82AB0C01F00730515 /* ImageLoader.swift in Sources */,
 				640103412A5EF8B600B32F98 /* Persistence.swift in Sources */,
 				64CD4FD22A82FCD4007EF594 /* ScryfallAPIServices.swift in Sources */,
 				64A5E7272A65F4DD00FCE953 /* AddTokenMenuView.swift in Sources */,

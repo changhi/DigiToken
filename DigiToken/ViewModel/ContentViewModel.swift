@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ContentViewModel: ObservableObject {
     @Published var tokens: Array<TokenViewModel>
     @Published var showAddTokenMenu: Bool = false
+    @Published var tmp: CardInfo?
     
     let service: ScryfallCardFetcherAPIServices
     
@@ -18,7 +20,7 @@ class ContentViewModel: ObservableObject {
         self.showAddTokenMenu = false
         self.service = service
         for _ in 0..<4 {
-            tokens.append(TokenViewModel())
+            tokens.append(TokenViewModel(Environment(\.scryFallService).wrappedValue))
         }
     }
     
@@ -26,7 +28,7 @@ class ContentViewModel: ObservableObject {
         tokens = Array<TokenViewModel>()
         TokenViewModel.resetUID()
         for _ in 0..<4 {
-            tokens.append(TokenViewModel())
+            tokens.append(TokenViewModel(Environment(\.scryFallService).wrappedValue))
         }
     }
     
@@ -35,29 +37,18 @@ class ContentViewModel: ObservableObject {
     }
     
     func createToken(_ tokenName: String, _ power: Int, _ toughness: Int) {
+        var selected = 0
         for i in 0..<tokens.count {
             if !tokens[i].show {
                 tokens[i].power = power
                 tokens[i].toughness = toughness
                 tokens[i].tokenName = tokenName
                 tokens[i].show = true
+                selected = i
                 break
             }
         }
-        
-        service.getCardInfo(cardName: tokenName) { [weak self](result) in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    self.showAddTokenMenu = true
-                    print(data)
-                case .failure(let error):
-                    self.showAddTokenMenu = true
-                    print(error)
-                }
-            }
-        }
+        service.getCardImageURL(cardName: tokenName).assign(to: &tokens[selected].$imageURL)
     }
     
     func change() {

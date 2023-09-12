@@ -12,7 +12,7 @@ import Combine
 struct TokenCardView: View {
     @Binding var model: TokenViewModel
     var height: CGFloat = 190
-    var width: CGFloat = 140
+    var width: CGFloat = 135
     
     var body: some View {
         if model.show {
@@ -20,22 +20,36 @@ struct TokenCardView: View {
                 VStack {
                     tokenOverlay(width, height, true, $model.rotation, $model.numTokens, $model.show)
                     tokenOverlay(width, height, false, $model.rotation, $model.numTokens, $model.show)
-                }.zIndex(1)
+                }.zIndex(2)
                 HStack(spacing: 5) {
                     if model.rotation == 90 {
                         Text("\(model.power * model.numTokens)/\(model.toughness * model.numTokens)")
                             .rotationEffect(.degrees(270))
                     }
-                    VStack {
-                        HStack {
-                            Text("\(model.numTokens)")
+                    ZStack {
+                        if let url = model.imageURL {
+                            // TODO: Find a way to reload the image when url changes
+                            AsyncImage(url: url, placeholder: {Text("loading...")})
+                                .aspectRatio(contentMode: .fit)
+                                .zIndex(-1)
+                        }
+                        VStack {
+                            HStack {
+                                Text("\(model.numTokens)")
+                                    .foregroundColor(.white)
+                                Spacer()
+                            }.padding([.leading, .top], 10)
                             Spacer()
-                        }.padding([.leading, .top], 10)
-                        Spacer()
-                        HStack {
-                            Text(model.tokenName)
-                            Text("\(model.power)/\(model.toughness)")
-                        }.padding([.bottom], 10)
+                            HStack {
+                                Spacer()
+                                Text(model.tokenName)
+                                    .foregroundColor(.white)
+                                Spacer()
+                                Text("\(model.power)/\(model.toughness)")
+                                    .foregroundColor(.white)
+                                Spacer()
+                            }.padding([.bottom], 10)
+                        }
                     }.frame(width: width, height: height, alignment: .center)
                         .background(Color.blue)
                         .cornerRadius(15)
@@ -93,15 +107,15 @@ struct TokenCardView: View {
 class TokenViewModel: ObservableObject, Hashable {
     static private var uid: Int = 0
     var id: Int
-    var tokenName: String
+    @Published var tokenName: String
     @Published var rotation: Double
     @Published var power: Int
     @Published var toughness: Int
     @Published var numTokens: Int
     @Published var show: Bool
-    @EnvironmentObject var vm: ContentViewModel
+    @Published var imageURL: URL?
     
-    init() {
+    init(_ service: ScryfallCardFetcherAPIServices) {
         self.id = TokenViewModel.generateId()
         self.tokenName = "token"
         self.rotation = 0.0
