@@ -73,7 +73,7 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
                 print("no data")
                 return
             }
-            let json = try! JSONSerialization.jsonObject(with: data, options: [])
+            _ = try! JSONSerialization.jsonObject(with: data, options: [])
             
             do {
                 let model = try self.jsonDecoder.decode(D.self, from: data)
@@ -98,6 +98,16 @@ class ScryfallTokenFetcherServices: ScryfallCardFetcherAPIServices {
                     if let imageUrl = data.image_uris?["normal"] {
                         self.urlCache[cardName] = imageUrl
                         return imageUrl
+                    }
+                }
+                if let cardFaces = data.card_faces {
+                    for face in cardFaces {
+                        if face.name == cardName {
+                            if let imageUrl = face.image_uris["normal"] {
+                                self.urlCache[cardName] = imageUrl
+                                return imageUrl
+                            }
+                        }
                     }
                 }
                 return nil
