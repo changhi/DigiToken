@@ -5,9 +5,9 @@
 //  Created by Daniel Chang on 7/12/23.
 //
 
+import Combine
 import Foundation
 import SwiftUI
-import Combine
 
 struct TokenCardView: View {
     @Binding var model: TokenViewModel
@@ -40,7 +40,7 @@ struct TokenCardView: View {
                                 Spacer()
                             }.padding([.leading, .top], 10)
                             Spacer()
-                            if model.plusOneCounters == 0 {
+                            if model.plusOneCounters != 0 {
                                 plusOneView($model.plusOneCounters).zIndex(1)
                             }
                             HStack {
@@ -71,6 +71,7 @@ struct TokenCardView: View {
         var body: some View {
             VStack(alignment: .center) {
                 Text("+\(plusOneCounters)/+\(plusOneCounters)")
+                    .foregroundColor(.black)
             }.frame(width: 50, height: 50, alignment: .center)
                 .background(Color.white)
                 .cornerRadius(15)

@@ -25,11 +25,11 @@ struct ContentView: View {
             }
             VStack {
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 15)
                 HStack() {
-                    Button("Counters") {
-                        vm.toggleCounters()
-                    }
+                    Button("Counters") { vm.toggleCounters() }
+                    Spacer()
+                    LifeCounterView(lifeTotal: 40)
                     Spacer()
                     Button("Life") {
                         
@@ -41,9 +41,7 @@ struct ContentView: View {
                         vm.resetBoard()
                     }
                     Spacer()
-                    Button("+") {
-                        vm.toggleAddTokenMenu()
-                    }
+                    Button("+") { vm.toggleAddTokenMenu()}
                 }
             }
             HStack(spacing: 30) {
