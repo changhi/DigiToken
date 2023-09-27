@@ -36,6 +36,12 @@ class ContentViewModel: ObservableObject {
         showAddTokenMenu = !showAddTokenMenu
     }
     
+    func toggleCounters() {
+        for token in tokens {
+            token.addCounters = !token.addCounters
+        }
+    }
+    
     func createToken(_ tokenName: String, _ power: Int, _ toughness: Int) {
         var selected = 0
         for i in 0..<tokens.count {

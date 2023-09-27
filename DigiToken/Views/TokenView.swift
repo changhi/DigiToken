@@ -18,12 +18,12 @@ struct TokenCardView: View {
         if model.show {
             ZStack {
                 VStack {
-                    tokenOverlay(width, height, true, $model.rotation, $model.numTokens, $model.show)
-                    tokenOverlay(width, height, false, $model.rotation, $model.numTokens, $model.show)
+                    tokenOverlay(width, height, true, $model.rotation, $model.numTokens, $model.show, $model.addCounters, $model.plusOneCounters)
+                    tokenOverlay(width, height, false, $model.rotation, $model.numTokens, $model.show, $model.addCounters, $model.plusOneCounters)
                 }.zIndex(2)
                 HStack(spacing: 5) {
                     if model.rotation == 90 {
-                        Text("\(model.power * model.numTokens)/\(model.toughness * model.numTokens)")
+                        Text("\((model.power + model.plusOneCounters) * model.numTokens)/\((model.toughness + model.plusOneCounters) * model.numTokens)")
                             .rotationEffect(.degrees(270))
                     }
                     ZStack {
@@ -40,6 +40,9 @@ struct TokenCardView: View {
                                 Spacer()
                             }.padding([.leading, .top], 10)
                             Spacer()
+                            if model.plusOneCounters == 0 {
+                                plusOneView($model.plusOneCounters).zIndex(1)
+                            }
                             HStack {
                                 Spacer()
                                 Text(model.tokenName)
@@ -58,6 +61,22 @@ struct TokenCardView: View {
         }
     }
     
+    struct plusOneView: View {
+        @Binding var plusOneCounters: Int
+        
+        init(_ plusOneCounters: Binding<Int>) {
+            self._plusOneCounters = plusOneCounters
+        }
+        
+        var body: some View {
+            VStack(alignment: .center) {
+                Text("+\(plusOneCounters)/+\(plusOneCounters)")
+            }.frame(width: 50, height: 50, alignment: .center)
+                .background(Color.white)
+                .cornerRadius(15)
+        }
+    }
+    
     //move to own file / class
     struct tokenOverlay: View {
         var width: CGFloat
@@ -66,15 +85,19 @@ struct TokenCardView: View {
         @Binding var rotation: Double
         @Binding var numTokens: Int
         @Binding var show: Bool
+        @Binding var addCounters: Bool
+        @Binding var numCounters: Int
         
         init(_ width: CGFloat, _ height: CGFloat, _ increase: Bool, _ rotation: Binding<Double>,
-             _ numTokens: Binding<Int>, _ show: Binding<Bool>) {
+             _ numTokens: Binding<Int>, _ show: Binding<Bool>, _ addCounters: Binding<Bool>, _ numCounters: Binding<Int>) {
             self._rotation = rotation
             self._numTokens = numTokens
             self._show = show
             self.width = width
             self.height = height / 2
             self.increase = increase
+            self._addCounters = addCounters
+            self._numCounters = numCounters
         }
         
         var body: some View {
@@ -89,13 +112,17 @@ struct TokenCardView: View {
                     }
                 }.onTapGesture {
                     if increase {
-                        numTokens += 1
+                        if addCounters { numCounters += 1 }
+                        else { numTokens += 1 }
                     }
                     else {
-                        numTokens -= 1
-                        if numTokens < 0 {
-                            numTokens = 1
-                            show = false
+                        if addCounters { numCounters -= 1 }
+                        else {
+                            numTokens -= 1
+                            if numTokens < 0 {
+                                numTokens = 1
+                                show = false
+                            }
                         }
                     }
                 }
@@ -114,6 +141,8 @@ class TokenViewModel: ObservableObject, Hashable {
     @Published var numTokens: Int
     @Published var show: Bool
     @Published var imageURL: URL?
+    @Published var plusOneCounters: Int
+    @Published var addCounters: Bool
     
     init(_ service: ScryfallCardFetcherAPIServices) {
         self.id = TokenViewModel.generateId()
@@ -123,6 +152,8 @@ class TokenViewModel: ObservableObject, Hashable {
         self.toughness = 1
         self.numTokens = 1
         self.show = false
+        self.addCounters = false
+        self.plusOneCounters = 0
     }
     
     init(_ tokenName: String, _ power: Int, _ toughness: Int) {
@@ -133,6 +164,8 @@ class TokenViewModel: ObservableObject, Hashable {
         self.toughness = toughness
         self.numTokens = 1
         self.show = false
+        self.addCounters = false
+        self.plusOneCounters = 0
     }
     
     static func generateId() -> Int {

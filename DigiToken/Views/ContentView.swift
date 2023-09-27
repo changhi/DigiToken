@@ -25,6 +25,17 @@ struct ContentView: View {
             }
             VStack {
                 Spacer()
+                    .frame(height: 10)
+                HStack() {
+                    Button("Counters") {
+                        vm.toggleCounters()
+                    }
+                    Spacer()
+                    Button("Life") {
+                        
+                    }
+                }
+                Spacer()
                 HStack() {
                     Button("Reset") {
                         vm.resetBoard()
